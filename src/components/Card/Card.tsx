@@ -7,8 +7,6 @@ type CardProps = {
 };
 
 const Card = ({ product }: CardProps) => {
-  console.log("products...", product);
-
   return (
     <Link to={`/product/${product.id}`} className="link">
       <div className="card">

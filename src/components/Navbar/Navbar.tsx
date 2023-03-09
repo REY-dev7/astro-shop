@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
@@ -7,12 +7,15 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LanguageImg from "../image/en.png";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import Cart from "../Cart/Cart";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${open ? "top-0 sticky z-10 bg-white" : ""} `}>
       <div className="wrapper">
         <div className="left ">
           <div className="item ">
@@ -56,13 +59,14 @@ const Navbar = (props: Props) => {
             <SearchIcon />
             <PersonOutlineOutlinedIcon />
             <FavoriteBorderOutlinedIcon />
-            <div className="cartIcon">
+            <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
               <span>0</span>
             </div>
           </div>
         </div>
       </div>
+      {open && <Cart setOpen={setOpen} />}
     </nav>
   );
 };

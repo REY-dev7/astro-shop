@@ -1,21 +1,21 @@
-import React from 'react'
-import Slider from '../../components/Slider/Slider'
-import ExtSlider from '../../components/Slider/ExtSlider'
-import FeatureProducts from '../../components/featureProducts/FeatureProducts'
-import Categories from '../../components/Categories/Categories'
+import React from "react";
+import ExtSlider from "../../components/Slider/ExtSlider";
+import FeatureProducts from "../../components/featureProducts/FeatureProducts";
+import Categories from "../../components/Categories/Categories";
+import Contacts from "../../components/Contacts/Contacts";
 
-type Props = {}
+type Props = {};
 
 const Homepage = (props: Props) => {
   return (
     <div>
-      {/* <Slider /> */}
       <ExtSlider />
       <FeatureProducts type="feature products" />
       <Categories />
       <FeatureProducts type="trending products" />
+      <Contacts />
     </div>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;

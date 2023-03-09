@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css"
+import PaymentImg from "../image/payment.png"
 
 type Props = {};
 
@@ -50,7 +51,7 @@ const Footer = (props: Props) => {
           </span>
         </div>
         <div className="right">
-          <img src="/img/payment.png" alt="" />
+          <img src={PaymentImg} alt="payment logos" />
         </div>
       </div>
     </div>
