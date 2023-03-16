@@ -24,8 +24,8 @@ const SingleProduct = (props: Props) => {
         </div>
       </div>
       <div className="right">
-        <h1>Title</h1>
-        <span>$9009</span>
+        <h1 className="text-lg font-bold">Title</h1>
+        <span >$9009</span>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam vitae
           facere, ab ut nihil eaque dolorum? Facere repellat asperiores odio?
