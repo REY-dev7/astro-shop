@@ -10,9 +10,9 @@ const Homepage = (props: Props) => {
   return (
     <div>
       <ExtSlider />
-      <FeatureProducts type="feature products" />
+      <FeatureProducts type="featured" />
       <Categories />
-      <FeatureProducts type="trending products" />
+      <FeatureProducts type="trending" />
       <Contacts />
     </div>
   );
