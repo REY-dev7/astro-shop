@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./card.css";
+import {  ProductProps } from "../../types/types";
 
-type CardProps = {
-  product: any;
-};
-
-const Card = ({ product }: CardProps) => {
+const Card = ({product }:{product:ProductProps}) => {
+  const getImage = process.env.REACT_APP_UPLOAD_URL;
+    
   return (
-    <Link to={`/product/${product.id}`} className="link">
+    <Link to={`/product/${product?.id}`} className="link">
       <div className="card">
         <div className="image">
-            {product?.isNew && <span>New Season</span>}
-          <img src={product?.img} alt="" className="mainImg" />
-          <img src={product?.img2} alt="" className="secondImg" />
+          {product?.attributes?.isNew && <span>New Season</span>}
+          <img
+            src={getImage + product?.attributes?.img?.data?.attributes?.url}
+            alt=""
+            className="mainImg"
+          />
+          <img src={getImage + product?.attributes?.img2?.data?.attributes?.url} alt="" className="secondImg" />
         </div>
-        <h1>{product?.title}</h1>
+        <h1>{product?.attributes?.title}</h1>
         <div className="prices">
-            <h3>{product?.oldPrice}</h3>
-            <h3>{product?.price}</h3>
+          <h3>
+            ${ product?.attributes?.price + 20}
+          </h3>
+          <h3>${product?.attributes?.price}</h3>
         </div>
       </div>
     </Link>
