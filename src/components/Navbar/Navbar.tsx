@@ -8,11 +8,14 @@ import LanguageImg from "../image/en.png";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [open, setOpen] = useState(false);
+  const products = useSelector((state: RootState) => state.cart.products);
 
   return (
     <nav className={`navbar ${open ? "top-0 sticky z-10 bg-white" : ""} `}>
@@ -61,7 +64,7 @@ const Navbar = (props: Props) => {
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              <span>{products?.length}</span>
             </div>
           </div>
         </div>
