@@ -1,7 +1,7 @@
 export interface FeatureProductsProps {
   type: string;
 }
-export interface RootObject {
+export interface DataProps {
   data: ProductProps[];
   meta: Meta;
 }
@@ -24,6 +24,9 @@ export interface AttributesProps {
   categories: Categories;
   sub_categories: Subcategories;
 }
+
+
+export type AttributesKeys = keyof AttributesProps;
 
 export interface Img {
   data: ImgDataProps;
