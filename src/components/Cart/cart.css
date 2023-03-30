@@ -2,7 +2,7 @@
   position: absolute;
   right: 20px;
   top: 80px;
-  width: 40vw;
+  width: 30vw;
   z-index: 999;
   overflow: hidden;
   background-color: rgb(236, 236, 236);
@@ -19,7 +19,7 @@
 .cart .item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   margin-bottom: 30px;
 }
 .cart .item img {
