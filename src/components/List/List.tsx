@@ -4,21 +4,22 @@ import "./list.css";
 import { useFetch } from "../../hooks/useFetch";
 import { ProductProps } from "../../types/types";
 import { Spinner } from "flowbite-react";
+import { useAllProducts } from "../../hooks/usePost";
 
 type ListProps = {
   catId: number;
   maxPrice: number;
-  sort: string | null;
+  sort: string ;
   subCates: any[];
 };
 
 const List = ({ catId, maxPrice, sort, subCates }: ListProps) => {
   let { productData, loading, error } = useFetch(
     `/products?populate=*&[filters][categories][id]=${catId}${subCates.map(
-      (item) => `&[filters][sub_categories][id][$eq]=${item}`
-    )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
+      (product) => `&[filters][sub_categories][id][$eq]=${product}`
+    )}&[filters][price][$lte]=${maxPrice}${sort ? `&sort=price:${sort}` : ""}`
   );
-  
+
   return (
     <div className="list">
       {loading ? (
