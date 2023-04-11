@@ -8,8 +8,8 @@ import { SubcategoryProps } from "../../types/types";
 const Products = () => {
   const params = useParams();
   const catId = parseInt(params?.id as string);
-  const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState<string | null>(null);
+  const [maxPrice, setMaxPrice] = useState(2000);
+  const [sort, setSort] = useState<string>("");
   const [selectedSubCates, setSelectedSubCates] = useState<any[]>([]);
 
   const { productData, loading, error } = useFetch(
@@ -27,7 +27,6 @@ const Products = () => {
     );
   };
 
-  // console.log("selectedSubCates", selectedSubCates);
   return (
     <div className="products">
       <div className="left">
@@ -46,7 +45,7 @@ const Products = () => {
                   id={item?.id.toString()}
                   value={item?.id}
                 />
-                <label htmlFor="1">{item?.attributes?.title}</label>
+                <label htmlFor={item?.id.toString()}>{item?.attributes?.title}</label>
               </div>
             ))}
           </div>
@@ -58,7 +57,7 @@ const Products = () => {
             <input
               type="range"
               min={0}
-              max={1000}
+              max={maxPrice}
               onChange={(e: any) => setMaxPrice(e.target.value)}
             />
             <span>{maxPrice}</span>
