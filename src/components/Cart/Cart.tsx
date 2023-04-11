@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IProduct, removeFromCart, resetCart } from "../../redux/cartReducer";
 import { RootState } from "../../redux/store";
 import { makeRequest } from "../../utils/makeRequest";
-import { Stripe, loadStripe } from "@stripe/stripe-js";
-import { Link } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
 
 type CartProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,7 +39,6 @@ const Cart = ({ setOpen, open }: CartProps) => {
         sessionId: res?.data?.stripeSession?.id,
       });
     } catch (err) {
-      window.alert(err)
       console.log(err);
     }
   };
