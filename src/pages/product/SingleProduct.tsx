@@ -17,7 +17,7 @@ const SingleProduct = () => {
   const getImage = process.env.REACT_APP_UPLOAD_URL!;
 
   return (
-    <div className="product flex flex-col gap-3 md:flex-row p-2 lg:px-[50px] lg:py-[20px]">
+    <div className="product flex flex-col gap-3 md:flex-row lg:px-[50px] lg:mb-10">
       {error ? (
         "Something went wrong!"
       ) : loading ? (
@@ -35,7 +35,7 @@ const SingleProduct = () => {
                 }
                 alt="1"
                 onClick={(e: any) => setSelectedImage("img")}
-                className="h-[80px] md:h-[150px] w-full lg:h-[150px] mb-1 md:mb-5"
+                className="h-[80px] md:h-[150px] w-full lg:h-[150px] mb-1 md:mb-5 shadow-md rounded"
               />
               <img
                 src={
@@ -43,7 +43,7 @@ const SingleProduct = () => {
                   singleProductData?.attributes?.img2?.data?.attributes?.url
                 }
                 alt="2"
-                className="h-[80px] md:h-[150px] w-full lg:h-[150px]"
+                className="h-[80px] md:h-[150px] w-full lg:h-[150px] shadow-md rounded"
                 onClick={(e: any) => setSelectedImage("img2")}
               />
             </div>
@@ -55,7 +55,7 @@ const SingleProduct = () => {
                     ?.url
                 }
                 alt={selectedImage}
-                className="h-[40vh] md:h-[60vh] lg:h-[87vh] w-full "
+                className="h-[40vh] md:h-[60vh] lg:h-max xl:h-[100vh] w-full object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>
@@ -68,7 +68,7 @@ const SingleProduct = () => {
               <span className="text-lg font-bold">Price: </span>
               <span>${singleProductData?.attributes?.price}</span>
               <p>
-                <span className="text-lg font-bold">Description:</span>
+                <span className="text-lg font-bold">Description: </span>
                 {singleProductData?.attributes.desc} Lorem ipsum, dolor sit amet
                 consectetur adipisicing elit. Omnis quia alias praesentium
                 dolore placeat quasi, reprehenderit eum doloribus, vitae
