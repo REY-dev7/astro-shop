@@ -3,12 +3,12 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import SingleProduct from './pages/product/SingleProduct';
 import Products from './pages/Category/Products';
 import Homepage from './pages/home/Homepage';
-import Navbar from './components/Navbar/Navbar';
+import NavbarComponent from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
 const Layout = ()=>{
-  return <div className="app">
-    <Navbar />
+  return <div className="app w-full">
+    <NavbarComponent />
     <Outlet />
     <Footer />
   </div>
