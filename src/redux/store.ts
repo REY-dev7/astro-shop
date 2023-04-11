@@ -12,7 +12,9 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const stripe = require('stripe')('sk_test_51MqwLaENIc8mlIZVeboiKPZ4LHCepT4UuKVFKDVHLLJzku2RpgL1PJKcztTTUv5VNRnliivFVrZKA94vsxH5Enr100gZmbjXdi');
+const stripe = require("stripe")(
+  "sk_test_51MqwLaENIc8mlIZVeboiKPZ4LHCepT4UuKVFKDVHLLJzku2RpgL1PJKcztTTUv5VNRnliivFVrZKA94vsxH5Enr100gZmbjXdi"
+);
 
 const persistConfig = {
   key: "root",
@@ -35,9 +37,6 @@ export const store = configureStore({
 export let persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
-
-
-
 
 // import { configureStore } from '@reduxjs/toolkit'
 // import cartReducer from './cartReducer'
