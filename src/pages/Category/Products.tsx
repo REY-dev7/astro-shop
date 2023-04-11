@@ -12,7 +12,7 @@ const Products = () => {
   const [sort, setSort] = useState<string>("");
   const [selectedSubCates, setSelectedSubCates] = useState<any[]>([]);
 
-  const { productData, loading, error } = useFetch(
+  const { productData } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
 

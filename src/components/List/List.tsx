@@ -4,7 +4,6 @@ import "./list.css";
 import { useFetch } from "../../hooks/useFetch";
 import { ProductProps } from "../../types/types";
 import { Spinner } from "flowbite-react";
-import { useAllProducts } from "../../hooks/usePost";
 
 type ListProps = {
   catId: number;
