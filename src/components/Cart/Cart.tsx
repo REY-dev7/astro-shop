@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { IProduct, removeFromCart, resetCart } from "../../redux/cartReducer";
 import { RootState } from "../../redux/store";
 import { makeRequest } from "../../utils/makeRequest";
-import { loadStripe } from "@stripe/stripe-js";
+import { Stripe, loadStripe } from "@stripe/stripe-js";
+import { Link } from "react-router-dom";
 
 type CartProps = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean
 };
 
-const Cart = ({ setOpen }: CartProps) => {
-  const products = useSelector((state: RootState) => state.cart.products);
+const Cart = ({ setOpen, open }: CartProps) => {
+  const products = useSelector((state: RootState) => state.cart?.products);
   const getImage = process.env.REACT_APP_UPLOAD_URL!;
   const dispatch = useDispatch();
 
@@ -30,12 +32,12 @@ const Cart = ({ setOpen }: CartProps) => {
 
   const handlePayment = async () => {
     try {
-      const stripe: any = await stripePromise;
+      const stripe = await stripePromise;
       const res = await makeRequest.post("/orders", {
         products,
       });
-      await stripe.redirectToCheckout({
-        sessionId: res.data.stripeSession.id,
+      await stripe?.redirectToCheckout({
+        sessionId: res?.data?.stripeSession?.id,
       });
     } catch (err) {
       console.log(err);
@@ -43,7 +45,7 @@ const Cart = ({ setOpen }: CartProps) => {
   };
 
   return (
-    <div className="cart shadow-2xl bg-slate-200">
+    <div className="cart w-[50vw] md:w-[60vw] lg:w-[30vw] right-1 shadow-2xl bg-slate-200">
       <div className="flex justify-between">
         <h1>Products in your cart</h1>
         <p
@@ -53,7 +55,7 @@ const Cart = ({ setOpen }: CartProps) => {
           X
         </p>
       </div>
-      <div className="h-40 md:h-[450px] overflow-auto ">
+      <div className="h-[50vh] md:h-[450px] overflow-auto ">
         {products?.map((product: IProduct) => (
           <div className="item h-[120px] border-b-4" key={product?.id}>
             <img src={getImage + product?.img} alt="" />
@@ -76,8 +78,8 @@ const Cart = ({ setOpen }: CartProps) => {
         <span>${totalPrice()}</span>
       </div>
       <div className="flex justify-between">
-        <button className="uppercase" onClick={handlePayment}>
-          proceed to checkout
+        <button className="uppercase bg-[#5b96f5] hover:bg-[#2879fe] px-4 py-2 rounded-lg text-white font-bold" onClick={handlePayment}>
+          proceed to checkout 
         </button>
         <span
           className="reset capitalize pt-3"

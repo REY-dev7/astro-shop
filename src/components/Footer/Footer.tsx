@@ -6,8 +6,8 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <div className="footer">
-      <div className="top">
+    <div className="footer lg:px-28 md:px-20 px-5">
+      <div className="top grid grid-cols-2 lg:grid-cols-4 my-5">
         <div className="item">
           <h1>Categories</h1>
           <span>Women</span>
@@ -43,14 +43,14 @@ const Footer = (props: Props) => {
           </span>
         </div>
       </div>
-      <div className="bottom">
-        <div className="left">
-          <span className="logo">Astro-Rey Store</span>
+      <div className="flex lg:flex-row flex-col justify-between lg:mt-10 mb-14">
+        <div className="flex justify-center items-center">
+          <span className="text-[#2879fe] font-bold md:text-3xl text-xl text-center font-serif">Astro-Rey Store</span>
           <span className="copyright">
             © Copyright 2023. All Rights Reserved
           </span>
         </div>
-        <div className="right">
+        <div className="right flex justify-center">
           <img src={PaymentImg} alt="payment logos" />
         </div>
       </div>
