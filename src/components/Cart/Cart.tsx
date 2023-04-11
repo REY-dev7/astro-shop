@@ -40,6 +40,7 @@ const Cart = ({ setOpen, open }: CartProps) => {
         sessionId: res?.data?.stripeSession?.id,
       });
     } catch (err) {
+      window.alert(err)
       console.log(err);
     }
   };
@@ -58,11 +59,11 @@ const Cart = ({ setOpen, open }: CartProps) => {
       <div className="h-[50vh] md:h-[450px] overflow-auto ">
         {products?.map((product: IProduct) => (
           <div className="item h-[120px] border-b-4" key={product?.id}>
-            <img src={getImage + product?.img} alt="" />
-            <div className="details w-full">
-              <h1>{product?.title}</h1>
+            <img src={getImage + product?.img} alt=""/>
+            <div className="details w-full ">
+              <h2 className="font-bold text-xl text-black">{product?.title}</h2>
               <p>{product?.desc?.substring(0, 70)}</p>
-              <div className="price">
+              <div className="text-lg ">
                 {product?.quantity} x ${product?.price}
               </div>
             </div>
@@ -77,7 +78,7 @@ const Cart = ({ setOpen, open }: CartProps) => {
         <span>subtotal</span>
         <span>${totalPrice()}</span>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between" >
         <button className="uppercase bg-[#5b96f5] hover:bg-[#2879fe] px-4 py-2 rounded-lg text-white font-bold" onClick={handlePayment}>
           proceed to checkout 
         </button>
