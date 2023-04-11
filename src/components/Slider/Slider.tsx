@@ -6,7 +6,7 @@ type Props = {};
 
 const Slider = (props: Props) => {
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-[600px]">
+    <div className="h-[36vh] sm:h-[64vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh]">
       <Carousel>
           {sliderData &&
             sliderData?.map((slider: any, id) => (
