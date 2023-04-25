@@ -17,7 +17,7 @@ const SingleProduct = () => {
   const getImage = process.env.REACT_APP_UPLOAD_URL!;
 
   return (
-    <div className="product flex flex-col gap-3 md:flex-row lg:px-[50px] lg:mb-10">
+    <div className="product flex flex-col gap-3 md:flex-row lg:px-[50px] lg:mb-10 p-4">
       {error ? (
         "Something went wrong!"
       ) : loading ? (
@@ -35,7 +35,7 @@ const SingleProduct = () => {
                 }
                 alt="1"
                 onClick={(e: any) => setSelectedImage("img")}
-                className="h-[80px] md:h-[150px] w-full lg:h-[150px] mb-1 md:mb-5 shadow-md rounded"
+                className="h-[15vh] sm:h-[20vh] md:h-[150px] w-[25vw] lg:h-[150px] mb-1 md:mb-5 shadow-md rounded"
               />
               <img
                 src={
@@ -43,7 +43,7 @@ const SingleProduct = () => {
                   singleProductData?.attributes?.img2?.data?.attributes?.url
                 }
                 alt="2"
-                className="h-[80px] md:h-[150px] w-full lg:h-[150px] shadow-md rounded"
+                className="h-[15vh] sm:h-[20vh] md:h-[150px] w-[25vw] lg:h-[150px] shadow-md rounded"
                 onClick={(e: any) => setSelectedImage("img2")}
               />
             </div>
@@ -55,7 +55,7 @@ const SingleProduct = () => {
                     ?.url
                 }
                 alt={selectedImage}
-                className="h-[40vh] md:h-[60vh] lg:h-max xl:h-[100vh] w-full object-cover rounded-lg shadow-lg"
+                className="h-[45vh] sm:h-[65vh] md:h-[85vh] lg:h-[90vh] xl:h-[100vh] w-full object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ const SingleProduct = () => {
                 temporibus consectetur nemo quas reiciendis dignissimos ipsa
                 ipsum assumenda voluptatum dolorem.
               </p>
-              <div className="quantity justify-center mb-3">
+              <div className="quantity justify-center mb-3 mt-8">
                 <button
                   className=" px-2 font-extrabold text-2xl rounded-lg mr-3"
                   onClick={() =>
