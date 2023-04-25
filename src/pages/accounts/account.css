@@ -1,0 +1,28 @@
+.main {
+    width: 414px;
+    height: fit-content;
+    background-color: #fff;
+    margin-top: 10vh;
+    box-shadow: 10px 10px 10px 0.1px rgba(0, 0, 0, 0.2);
+  }
+  .homePage {
+    height: 100vh;
+    box-sizing: border-box;
+  }
+  .sign-in {
+    background-image: url("../../components/image/clothes.webp");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 100%;
+  }
+  .fade-bottom {
+    background: linear-gradient(
+      to top,
+      rgba(255, 254, 254, 0),
+      rgba(255, 254, 255, 0.185),
+      rgb(255, 254, 255),
+      rgba(255, 254, 255),
+      rgba(255, 254, 255),
+      rgba(255, 255, 255)
+    );
+  }
