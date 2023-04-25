@@ -19,3 +19,20 @@ code {
   color: inherit;
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Set the background color of the scroll bar */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f165;
+}
+
+/* Set the color and style of the scroll bar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #838181b2;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
