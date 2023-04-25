@@ -1,7 +1,7 @@
 .featuredProducts {
   /* padding: 100px 200px; */
 }
-.top {
+/* .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,4 +19,7 @@
   display: flex;
   justify-content: center;
   gap: 50px;
-}
+} */
+
+/* Set the width and height of the scroll bar */
+

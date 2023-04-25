@@ -1,6 +1,6 @@
 .slider {
   height: calc(100vh - 80px);
-  width: 100%;
+  /* width: 100%; */
   position: relative;
   overflow: hidden;
 }
@@ -12,12 +12,12 @@
   /* border: 10px solid red; */
 }
 .slider .container img {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   object-fit: cover;
 }
 .slider .icons {
-  width: fit-content;
+  /* width: fit-content; */
   display: flex;
   position: absolute;
   left: 0;
@@ -27,7 +27,7 @@
   margin: auto;
 }
 .slider .icons .icon {
-  width: 50px;
+  /* width: 50px; */
   height: 50px;
   border: 1px solid #999;
   display: flex;
