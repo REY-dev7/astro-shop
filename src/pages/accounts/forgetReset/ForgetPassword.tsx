@@ -1,36 +1,23 @@
 import axios from "axios";
 import { useState } from "react";
 import { MdOutlineMail } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { useNavigate } from "react-router-dom";
+// import { toast } from "react-toastify";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const navigate = useNavigate();
-
-  // const handleSubmit = async () => {
-  //   console.log("asdasdsa");
-  //   const url = "http://localhost:1337/auth/forgot-password";
-  //   // const url = `${process.env.REACT_APP_API_BASE_URL!}/auth/forgot-password`;
-  //   console.log(".........");
-  //   console.log("url",url);
-  //   await axios.put(url, {email});
-  //   navigate("/login");
-  // };
+  // const navigate = useNavigate();
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-
-    const url = "http://localhost:1337/auth/forgot-password";
+    const url = `${process.env.REACT_APP_UPLOAD_URL}/auth/forgot-password`;
     const data = { email };
 
     try {
       const response = await axios.post(url, data);
       console.log(response);
-      alert("Password reset email sent! Check your inbox.");
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again later.");
+      // console.error(error);
     }
   };
 
@@ -55,15 +42,6 @@ const ForgotPassword = () => {
       >
         Reset Password
       </button>
-      {/* <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <button type="submit">Reset Password</button> */}
     </div>
   );
 };
