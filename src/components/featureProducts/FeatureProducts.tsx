@@ -14,11 +14,12 @@ const FeatureProducts = ({ type }: FeatureProductsProps) => {
   return (
     <div className=" px-2 md:px-10 lg:px-40 w-full">
       <div className="flex gap-4 max-w-md mx-auto bg-white overflow-hidden md:max-w-2xl my-5 md:my-10 ">
-      {/* <div className=" flex gap-5 px-5 md:px-10 my-4 w-full "> */}
-        <h1 className="text-xl w-2/3 font-bold uppercase flex items-center lg:pl-10">{type} products</h1>
+        <h1 className="text-xl w-2/3 font-bold uppercase flex items-center lg:pl-10">
+          {type} products
+        </h1>
         <p className="tracking-wide text-sm md:text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt 
+          eiusmod tempor incididunt
         </p>
       </div>
       <div className="flex gap-5 w-full overflow-x-auto">
