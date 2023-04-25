@@ -10,7 +10,7 @@ type Props = {};
 
 const Contacts = (props: Props) => {
   return (
-    <div className="w-full bg-[#5685d1e3] md:py-5 py-2 border-2 border-red-700">
+    <div id="contact" className="w-full bg-[#5685d1e3] md:py-5 py-2">
       <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-10 items-center">
         <span className="text-xl font-bold">BE IN TOUCH WITH US:</span>
         <div className="mail flex border rounded">
