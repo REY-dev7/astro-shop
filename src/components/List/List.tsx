@@ -8,7 +8,7 @@ import { Spinner } from "flowbite-react";
 type ListProps = {
   catId: number;
   maxPrice: number;
-  sort: string ;
+  sort: string;
   subCates: any[];
 };
 
@@ -20,9 +20,9 @@ const List = ({ catId, maxPrice, sort, subCates }: ListProps) => {
   );
 
   return (
-    <div className="list">
+    <div className="list grid  lg:grid-cols-3 grid-cols-2 ">
       {loading ? (
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center">
           <Spinner aria-label="Default status example" size="xl" />
         </div>
       ) : (
