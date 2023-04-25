@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import React from "react";
-// import "./featureProducts.css";
+import "./featureProducts.css";
 import Card from "../Card/Card";
 import { useFetch } from "../../hooks/useFetch";
 import { Spinner } from "flowbite-react";
@@ -12,20 +12,22 @@ const FeatureProducts = ({ type }: FeatureProductsProps) => {
   );
 
   return (
-    <div className="featuredProducts lg:px-10 md:my-7 mt-4">
-      <div className="top flex gap-5 w-full mb-5 lg:mb-12 px-5">
-        <h1 className="text-xl w-2/3 font-bold uppercase flex items-center lg:pl-20">{type} products</h1>
-        <p className="">
+    <div className=" px-2 md:px-10 lg:px-40 w-full">
+      <div className="flex gap-4 max-w-md mx-auto bg-white overflow-hidden md:max-w-2xl my-5 md:my-10 ">
+      {/* <div className=" flex gap-5 px-5 md:px-10 my-4 w-full "> */}
+        <h1 className="text-xl w-2/3 font-bold uppercase flex items-center lg:pl-10">{type} products</h1>
+        <p className="tracking-wide text-sm md:text-base">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. 
+          eiusmod tempor incididunt 
         </p>
       </div>
-      <div className="bottom flex gap-5 justify-center px-5">
+      <div className="flex gap-5 w-full overflow-x-auto">
         {error ? (
           "Something went wrong!"
         ) : loading ? (
-          <Spinner aria-label="Default status example" size="xl" />
+          <div className="flex justify-center items-center h-40 w-full">
+            <Spinner aria-label="Default status example" size="xl" />
+          </div>
         ) : (
           productData &&
           productData.map((product: ProductProps) => (
