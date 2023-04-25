@@ -1,28 +1,27 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useState } from "react";
 import { MdLockOutline } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
 
-type Props = {};
-const initialUser = { password: "", identifier: "" };
+// const initialUser = { password: "", identifier: "" };
 
-const ResetPassword = (props: Props) => {
+const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [user, setUser] = useState(initialUser);
+  // const [user, setUser] = useState(initialUser);
 
-  const handleSubmit = async () => {
-    const url = "http://localhost:1337/api/auth/reset-password";
+  // const handleSubmit = async () => {
+  //   const url = "http://localhost:1337/api/auth/reset-password";
 
-    if (user.identifier && user.password && token) {
-      const { data } = await axios.post(url, user);
-    //   if (data.user) {
-    //     console.log("...", data.user);
-    //   }
-    }
-  };
+  //   if (user.identifier && user.password && token) {
+  //     const { data } = await axios.post(url, user);
+  //   //   if (data.user) {
+  //   //     console.log("...", data.user);
+  //   //   }
+  //   }
+  // };
   return (
     <div className="flex justify-center h-screen items-center bg-gradient-to-t from-gray-400 to-white border-4 border-red-700">
       <form
