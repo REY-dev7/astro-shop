@@ -1,98 +1,109 @@
-import React, { useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SearchIcon from "@mui/icons-material/Search";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import LanguageImg from "../image/en.png";
+import React, { useEffect, useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import "./navbar.css";
-import Cart from "../Cart/Cart";
+import User from "../image/user-account.png";
+// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+// import LanguageImg from "../image/en.png";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { Avatar, Dropdown } from "flowbite-react";
-import { RxHamburgerMenu } from "react-icons/rx";
+import Cart from "../Cart/Cart";
 
-type Props = {};
+interface UserDataProps {
+  blocked: boolean;
+  confirmed: boolean;
+  createdAt: string;
+  email: string;
+  id: number;
+  provider: string;
+  updatedAt: string;
+  username: string;
+}
 
-const NavbarComponent = (props: Props) => {
-  const [open, setOpen] = useState(false);
+const NavbarComponent = () => {
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [userData, setUserData] = useState<UserDataProps>();
+  const [isSticky, setIsSticky] = React.useState(false);
   const products = useSelector((state: RootState) => state.cart.products);
 
-  const navigation = ["Home", "About", "Contact", "Stories"];
+  useEffect(() => {
+    const storedData = localStorage.getItem("User");
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 300) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navigation = [
+    { link: "/", name: "Home" },
+    { link: "/about-page", name: "About" },
+    { link: "/contact-page", name: "Contact" },
+    // { link: "/stories", name: "Stories" },
+  ];
   const categories = [
     { id: 1, category: "Men" },
     { id: 2, category: "Women" },
     { id: 4, category: "Children" },
     { id: 3, category: "Accessories" },
   ];
-
   return (
-    <>
-      <nav className="flex justify-between items-center w-full py-2 px-2 md:py-4">
-        <div className="flex gap-2 lg:ml-5 md:gap-3">
-          <div className="flex">
-            <img src={LanguageImg} alt="" />
-            <KeyboardArrowDownIcon />
+    <div
+      className={`${
+        isSticky ? "fixed top-0 left-0 w-full bg-white shadow-lg z-10" : ""
+      }`}
+    >
+      <div className="flex justify-between items-center py-3 px-2 lg:px-28">
+        <div className="flex gap-5">
+          <div className="text-xl font-bold font-serif uppercase  md:text-xl ">
+            <Link to="/" className="">
+              ASTRO
+            </Link>
           </div>
-          <div className="flex">
-            <span>USD</span>
-            <KeyboardArrowDownIcon />
-          </div>
-          <div className="flex gap-3 invisible lg:visible w-0 lg:w-full">
-            {categories &&
-              categories.map((cate: any) => (
-                <Link to={`/product/${cate.id}`} key={cate.id}>
-                  {cate.category}
-                </Link>
-              ))}
+          <div className="flex gap-3 invisible lg:visible w-0 lg:w-min">
+            {categories.map((cate: any) => (
+              <Link to={`/product/${cate.id}`} key={cate.id}>
+                {cate.category}
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="text-xl w-[100px] font-bold font-serif uppercase md:w-[300px] md:text-xl lg:text-2xl h-10 flex justify-center items-center">
-          <Link to="/" className="">
-            ASTRO
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <div className="flex gap-3 invisible lg:visible mr-4 w-0 lg:w-min">
+        <div className="flex gap-1">
+          <div className="invisible lg:visible flex gap-5 items-center w-0 lg:w-min mr-3">
             {navigation &&
               navigation.map((navigate: any) => (
-                <Link to="/" key={navigate?.id}>
-                  {navigate}
+                <Link to={navigate.link} key={navigate?.id}>
+                  {navigate.name}
                 </Link>
               ))}
           </div>
-          <div className="icons flex gap-2 items-center pr-2">
-            <div className="invisible w-0 lg:w-min lg:visible">
-              <SearchIcon />
-            </div>
-            <FavoriteBorderOutlinedIcon />
-            <div className="cartIcon mr-4" onClick={() => setOpen(!open)}>
-              <ShoppingCartOutlinedIcon />
-              <span>{products?.length}</span>
-            </div>
-            <Dropdown
-              arrowIcon={false}
-              inline={true}
-              label={
-                <Avatar
-                  alt="User settings"
-                  img="https:flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              }
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  name@ggg.com
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Divider />
-              <Dropdown.Item>Sign out</Dropdown.Item>
-            </Dropdown>
+          <div
+            className="cartIcon relative mr-2"
+            onClick={() => setOpen(!open)}
+          >
+            <ShoppingCartOutlinedIcon />
+            <span className="text-sm w-[20px] h-[20px] rounded-full bg-[#2879fe] text-white absolute right-[-10px] top-[-10px] flex justify-center items-center">
+              {products?.length}
+            </span>
           </div>
-          <div className="flex items-center visible lg:invisible border-2">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <img src={User} alt="" className="w-8" />
+          </button>
+          <div className="flex items-center visible lg:invisible lg:w-0">
             <button
               className="text-3xl text-black font-bold"
               onClick={() => setIsMenuToggled(!isMenuToggled)}
@@ -101,26 +112,62 @@ const NavbarComponent = (props: Props) => {
             </button>
           </div>
         </div>
-        {isMenuToggled && (
-          <div className="fixed right-0 bottom-0 z-40 h-screen w-[300px] bg-white drop-shadow-xl">
-            <div className="flex justify-end py-12 pr-3">
-              <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
-                <p className="h-6 w-8 text-red-700 font-extrabold outline animate-bounce hover:animate-none ">
-                  X
-                </p>
+      </div>
+      {isOpen && (
+        <div className="border-t-2 absolute top-12 right-9 lg:right-[105px] z-40 w-min py-2 px-2 rounded-lg bg-white">
+          {userData ? (
+            <>
+              <div className="grid place-items-center">
+                <span className=" text-sm capitalize font-medium">
+                  {userData?.username}
+                </span>
+                <span className="block text-sm ">{userData?.email}</span>
+              </div>
+              <hr className="my-2" />
+              <button className="flex justify-center w-full">
+                <Link to="/logout">Sign out</Link>
+              </button>
+            </>
+          ) : (
+            <div className="rounded-lg text-lg font-bold">
+              <button onClick={() => setIsOpen(!isOpen)}>
+                <a href="/login">Login</a>{" "}
               </button>
             </div>
-            <div className="flex flex-col w-full pl-4 text-xl">
+          )}
+        </div>
+      )}
+      {isMenuToggled && (
+        <div className="fixed right-0 bottom-0 z-40 h-screen  bg-white drop-shadow-xl">
+          <div className="flex justify-end pt-8 pr-3">
+            <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
+              <p className="h-6 w-8 text-red-700 font-extrabold outline animate-bounce hover:animate-none ">
+                X
+              </p>
+            </button>
+          </div>
+          <div className="grid">
+            {/* <div className="flex gap-2 justify-center">
+              <div className="flex">
+                <img src={LanguageImg} alt="" />
+                <KeyboardArrowDownIcon />
+              </div>
+              <div className="flex">
+                <span>USD</span>
+                <KeyboardArrowDownIcon />
+              </div>
+            </div> */}
+            <div className="flex flex-col  pl-4 text-xl">
               <p className="font-bold">Navigate:</p>
               <div className=" flex flex-col px-16 mb-5">
                 {navigation &&
                   navigation.map((navigate: any) => (
                     <Link
-                      to="/"
+                      to={navigate.link}
                       key={navigate?.id}
                       onClick={() => setIsMenuToggled(!isMenuToggled)}
                     >
-                      {navigate}
+                      {navigate.name}
                     </Link>
                   ))}
               </div>
@@ -138,19 +185,23 @@ const NavbarComponent = (props: Props) => {
                   ))}
               </div>
             </div>
+            {/* {userData ? (
+                <div className="grid place-items-center bottom-0">
+                  <span className=" text-sm capitalize font-medium">
+                    {userData.username}
+                  </span>
+                  <span className="block text-sm ">{userData.email}</span>
+                </div>
+              ) : (
+                <button>
+                  <a href="/login">Login</a>
+                </button>
+              )} */}
           </div>
-        )}
-        {open && <Cart setOpen={setOpen} open />}
-      </nav>
-      <div className="visible mx-1 lg:invisible my-1 lg:my-0 lg:h-0">
-        <input
-          type="text"
-          placeholder="Search...."
-          className=" w-full rounded-lg"
-        />
-      </div>
-    </>
+        </div>
+      )}
+      {open && <Cart setOpen={setOpen} open />}
+    </div>
   );
 };
-
 export default NavbarComponent;
