@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { LoginForm } from "../../components/login/Login";
 import "./account.css";
 import SignUp from "../../components/signup/SignUp";
-import { SignUpErrorState } from "../../types/types";
 
 type Props = {};
 

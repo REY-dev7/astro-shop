@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../Card/Card";
 import "./list.css";
 import { useFetch } from "../../hooks/useFetch";
@@ -13,7 +13,7 @@ type ListProps = {
 };
 
 const List = ({ catId, maxPrice, sort, subCates }: ListProps) => {
-  let { productData, loading, error } = useFetch(
+  let { productData, loading } = useFetch(
     `/products?populate=*&[filters][categories][id]=${catId}${subCates.map(
       (product) => `&[filters][sub_categories][id][$eq]=${product}`
     )}&[filters][price][$lte]=${maxPrice}${sort ? `&sort=price:${sort}` : ""}`
