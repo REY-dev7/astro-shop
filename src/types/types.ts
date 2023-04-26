@@ -118,3 +118,32 @@ export interface Pagination {
   pageCount: number;
   total: number;
 }
+export interface SignUpFormState {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface SignUpErrorState {
+  username?: string;
+  email?: string;
+  password?: string;
+}
+export interface LoginFormState {
+  identifier: string;
+  password: string;
+}
+export interface LoginErrorState {
+  identifier?: string;
+  password?: string;
+}
+export interface LoginProps {
+  setSignUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrors: React.Dispatch<React.SetStateAction<LoginErrorState>>;
+  errors: LoginErrorState;
+}
+export type SignUpProps = {
+  setSignUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrors: React.Dispatch<React.SetStateAction<SignUpErrorState>>;
+  errors: SignUpErrorState;
+};
