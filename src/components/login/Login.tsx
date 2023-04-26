@@ -6,13 +6,7 @@ import { BiShow } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { loginValidateForm } from "../../utils/functions";
-import { LoginErrorState } from "../../types/types";
-
-interface LoginProps {
-  setSignUp: React.Dispatch<React.SetStateAction<boolean>>;
-  setErrors: React.Dispatch<React.SetStateAction<LoginErrorState>>;
-  errors: LoginErrorState;
-}
+import { LoginProps } from "../../types/types";
 
 const initialUser = { password: "", identifier: "" };
 
