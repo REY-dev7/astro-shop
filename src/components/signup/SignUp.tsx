@@ -30,31 +30,34 @@ const SignUp = ({ setSignUp, errors, setErrors }: SignUpProps) => {
       setErrors(validationErrors);
     } else {
       try {
-        const { data } = await axios.post(url, user);
-        if (!data.ok) {
-          setErrors(data.errors);
-        } else {
-          setUser({
-            username: user.username,
-            email: user.email,
-            password: user.password,
-          });
-          setErrors({});
-          toast.success("Sign up successful!", {
-            hideProgressBar: true,
-          });
-        }
-        setSignUp(false);
-        // if (user.username && user.email && user.password) {
-        //   const { data } = await axios.post(url, user);
-        //   if (data) {
-        //     setUser(initialUser);
-        //     toast.success("Sign up successfully!", {
-        //       hideProgressBar: true,
-        //     });
-        // setSignUp(false);
-        //   }
+        // const { data } = await axios.post(url, user);
+        // if (!data.ok) {
+        //   setErrors(data.errors);
+        // } else {
+        //   setUser({
+        //     username: user.username,
+        //     email: user.email,
+        //     password: user.password,
+        //   });
+        //   setErrors({});
+        //   toast.success("Sign up successful!", {
+        //     hideProgressBar: true,
+        //   });
+        //   setSignUp(false);
         // }
+
+        if (user.username && user.email && user.password) {
+          const { data } = await axios.post(url, user);
+          if (data) {
+            setUser(initialUser);
+            toast.success("Sign up successfully!", {
+              hideProgressBar: true,
+            });
+            setSignUp(false);
+          } else {
+            setErrors(data.errors);
+          }
+        }
       } catch (error) {
         toast.error("Username and Email have been used", {
           hideProgressBar: true,
